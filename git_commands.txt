@@ -1,0 +1,21 @@
+--Git clone
+git clone https://github.com/ferncircle/Algo
+
+--Git see config
+git config --list
+
+--git update username and email
+git config user.name "Stan"
+git config user.email "fernfiesta@gmail.com"
+git config --list
+
+--git add files
+git add .
+
+--git commit files
+git commit -m "commit message"
+
+--git push code to branch
+git push origin master
+
+
