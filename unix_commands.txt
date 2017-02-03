@@ -7,6 +7,8 @@ $ find . -name "*renewal*"
 grep -irnw '.' -e "FriendRequest"
 --include next line
 cat proxy.json | grep "proxy\": {" -A 2
+--exclude dir
+grep -irnw --exclude-dir=.git '.' -e "pstream Mobile UA Detect Regex"
 
 --tail inverse match
 tail -400f /usr/local/tomcat/logs/app.log | egrep -v "quicklinksrss"
@@ -60,7 +62,11 @@ Process 17739 attached - interrupt to quit
 
 /bin/sh /tmp/click_through_backfill.sh | logger -t tracking 2>&1
 
+--user agent curl
 curl -Lvso /dev/null -A "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3" http://phone.military.com/video/
+
+--curl for proxy url
+curl -L -H "host: www.military.com" http://proxy06.military.com/hiring-vets| grep "Veteran Employer Resource Center"
 
 --Update file permission for gradlew
 git update-index --chmod=+x gradlew
@@ -74,6 +80,10 @@ tar -zxvf foo.tar.gz -C /tmp/bar (other way around, x for extract)
 
 --copy remote server file to windows current dir
 pscp sfargose@sfqtc01.military.com:/tmp/unitpage.tgz .
+
+--Copy local file to remote server
+scp  /cygdrive/c/Servers/jboss/jboss-4.2.2.GA/server/all/deploy/newsletter-subscription-service.war sfargose@sfdsvc01.military.com:/tmp
+scp sfargose@sfdweb200.military.com:/usr/local/tomcat/webapps/base-guide.war sfargose@sfdweb201.military.com:/tmp
 
 --get location of java
 readlink -f $(which java)
@@ -100,5 +110,14 @@ $ sudo service dnsmasq restart
 
 --Get max time difference
 cat data/time.txt | cut -d':' -f2- | awk  '{system("date +\"%s\" --date=\"" $0 "\"")}' | sed 'N; s/\n/-/; s/.*/echo \$((&))/e' | sort -r | tail -1
+
+--Replace text "INFO" in file with "ERROR"
+sed -i -e 's/INFO/ERROR/g' data/log4j.properties
+
+-- load balancer issues (http://www.military.com/bm)
+--restart keepalived
+service keepalived restart
+
+
 
 
